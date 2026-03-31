@@ -23,7 +23,7 @@ Rules:
 - For "books": extract book name ONLY (remove《》brackets, remove "author of" etc). Put context in description field
 - For "music": song/album name only, artist in artist field
 - For "videos": movie/TV/documentary name only, type in type field
-- For "people": ONLY extract guests, experts, authors, or notable people mentioned in the content. NEVER include the podcast host (the person who introduces the show and says "欢迎来到XXX，我是XXX"). Put their role or famous work in description field
+- For "people": ONLY extract guests, experts, authors, or notable people mentioned in the content. NEVER include the podcast host. IMPORTANT: You MUST fill in the description field with their role or most notable work/identity. Example: "CFA, FRM, 前媒体人" or "价值投资者，《与巴菲特共进午餐》作者". Do not leave description empty.
 - For "links": ONLY extract actual URLs that start with http:// or https://. Each link must have a valid url field. Use the page title or anchor text as title if available. EXCLUDE: shopping sites (京东, 淘宝, 天猫), timestamps, and Baidu Wangpan links.
 - If podcast/host/episode cannot be determined, use empty string ""
 - If nothing found in a category, return empty array []
@@ -183,12 +183,11 @@ function generateYouTubeVideoUrl(videoName: string): string {
 
 function generateWikiUrl(name: string): string {
   const nameEncoded = encodeURIComponent(cleanName(name));
-  return `https://www.google.com/search?q=${nameEncoded}+site%3Awikipedia.org`;
+  return `https://www.google.com/search?q=${nameEncoded}`;
 }
 
 function generateBaikeUrl(name: string): string {
   const nameEncoded = encodeURIComponent(cleanName(name));
-  // Use Baidu web search instead of Baidu Baike for better person results
   return `https://www.baidu.com/s?wd=${nameEncoded}`;
 }
 
@@ -255,10 +254,14 @@ async function enrichVideos(videos: ResourceItem[]): Promise<ResourceItem[]> {
 async function enrichPeople(people: ResourceItem[]): Promise<ResourceItem[]> {
   return Promise.all(
     people.map(async (person) => {
+      // Combine name and description for more precise search
+      const searchTerm = [person.name, person.description]
+        .filter(Boolean)
+        .join(" ");
       return {
         ...person,
-        wikiUrl: generateWikiUrl(person.name || ""),
-        baikeUrl: generateBaikeUrl(person.name || ""),
+        wikiUrl: generateWikiUrl(searchTerm),
+        baikeUrl: generateBaikeUrl(searchTerm),
       };
     })
   );
