@@ -1,4 +1,4 @@
-**[English](README.md)** | [中文](README.zh-CN.md)
+**[English](README.zh-CN.md)** | [中文](README.md)
 
 # PodExtract
 
