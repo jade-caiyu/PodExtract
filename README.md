@@ -6,7 +6,8 @@
 
 ## 中文
 
-从播客节目单（show notes）中提取结构化资源的工具。
+<details>
+<summary><b>从播客节目单（show notes）中提取结构化资源的工具。</b></summary>
 
 输入播客链接或文本，自动提取：
 - 📚 书籍
@@ -67,12 +68,14 @@ DASHSCOPE_API_KEY=你的密钥
 ### 联系我
 
 - GitHub: https://github.com/jade-caiyu
+</details>
 
 ---
 
 ## English
 
-Extract structured resources from podcast show notes.
+<details>
+<summary><b>Extract structured resources from podcast show notes.</b></summary>
 
 Input a podcast link or text, automatically extract:
 - 📚 Books
@@ -133,6 +136,7 @@ Recommended: [Vercel](https://vercel.com)
 ### Contact
 
 - GitHub: https://github.com/jade-caiyu
+</details>
 
 ---
 
