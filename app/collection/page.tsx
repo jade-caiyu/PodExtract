@@ -245,12 +245,12 @@ export default function CollectionPage() {
                     <ul className="detail-section-list">
                       {selectedItem.books.map((book, i) => (
                         <li key={i}>
-                          <span className="item-name">《<HighlightText text={book.name} query={searchQuery} />》</span>
+                          <span className="item-name">《<HighlightText text={book.name ?? ""} query={searchQuery} />》</span>
                           {book.author && <span className="item-author"> <HighlightText text={book.author} query={searchQuery} /></span>}
                           {book.description && <span className="item-desc"> — <HighlightText text={book.description} query={searchQuery} /></span>}
                           <span className="item-actions">
                             <PlatformBtn url={book.url} title={t("searchOnDouban")} />
-                            {book.url && <a href={`https://www.goodreads.com/search?q=${encodeURIComponent(book.name)}`} target="_blank" rel="noopener noreferrer" className="detail-platform-btn" title="Goodreads">G</a>}
+                            {book.url && <a href={`https://www.goodreads.com/search?q=${encodeURIComponent(book.name ?? "")}`} target="_blank" rel="noopener noreferrer" className="detail-platform-btn" title="Goodreads">G</a>}
                           </span>
                         </li>
                       ))}
@@ -301,7 +301,7 @@ export default function CollectionPage() {
                     <ul className="detail-section-list">
                       {selectedItem.people.map((person, i) => (
                         <li key={i}>
-                          <span className="item-name"><HighlightText text={person.name} query={searchQuery} /></span>
+                          <span className="item-name"><HighlightText text={person.name ?? ""} query={searchQuery} /></span>
                           {person.description && <span className="item-desc"> — <HighlightText text={person.description} query={searchQuery} /></span>}
                           <span className="item-actions">
                             <PlatformBtn url={person.wikiUrl} title={t("searchOnGoogle")} />
@@ -320,7 +320,7 @@ export default function CollectionPage() {
                       {selectedItem.links.map((link, i) => (
                         <li key={i}>
                           <a href={link.url} target="_blank" rel="noopener noreferrer">
-                            <HighlightText text={link.title || link.url} query={searchQuery} />
+                            <HighlightText text={link.title || link.url || ""} query={searchQuery} />
                           </a>
                         </li>
                       ))}
