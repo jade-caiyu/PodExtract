@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "@/app/i18n/context";
+import { TranslationKey } from "@/app/i18n/translations";
 import Card from "./Card";
 
 interface ResourceItem {
@@ -21,53 +23,44 @@ interface ResultSectionProps {
   items: ResourceItem[];
 }
 
-const SECTION_CONFIG = {
-  books: {
-    emoji: "📚",
-    title: "Books",
-    cardType: "book" as const,
-  },
-  music: {
-    emoji: "🎵",
-    title: "Music",
-    cardType: "music" as const,
-  },
-  videos: {
-    emoji: "🎬",
-    title: "Videos",
-    cardType: "video" as const,
-  },
-  people: {
-    emoji: "👤",
-    title: "People",
-    cardType: "people" as const,
-  },
-  links: {
-    emoji: "🔗",
-    title: "Links",
-    cardType: "link" as const,
-  },
-};
+const SECTION_EMOJI = {
+  books: "📚",
+  music: "🎵",
+  videos: "🎬",
+  people: "👤",
+  links: "🔗",
+} as const;
+
+const SECTION_KEYS = {
+  books: "books",
+  music: "music",
+  videos: "videos",
+  people: "people",
+  links: "links",
+} as const;
 
 export default function ResultSection({ type, items }: ResultSectionProps) {
+  const { t } = useTranslation();
+
   if (!items || items.length === 0) {
     return null;
   }
 
-  const config = SECTION_CONFIG[type];
+  const titleKey = SECTION_KEYS[type] as TranslationKey;
+  const title = t(titleKey);
 
   return (
     <section className="result-section">
       <div className="section-header">
-        <span className="section-emoji">{config.emoji}</span>
-        <h2 className="section-title">{config.title}</h2>
+        <span className="section-emoji">{SECTION_EMOJI[type]}</span>
+        <h2 className="section-title">{title}</h2>
         <span className="section-count">{items.length}</span>
       </div>
       <div className="resource-list">
         {items.map((item, index) => (
           <Card
             key={index}
-            type={config.cardType}
+            type={type === "links" ? "link" : type === "books" ? "book" : type === "videos" ? "video" : type}
             title={item.name || item.title || ""}
             description={item.description}
             url={item.url}

@@ -5,10 +5,10 @@ English | [中文](README.zh-CN.md)
 Extract structured resources from podcast show notes.
 
 Input a podcast link or text, automatically extract:
-- 📚 Books
-- 🎵 Music
-- 🎬 Videos
-- 👤 People
+- 📚 Books (with author & description)
+- 🎵 Music (with artist info)
+- 🎬 Videos (with Bilibili/YouTube links)
+- 👤 People (with Wikipedia/Baidu links)
 - 🔗 Links
 
 ## Supported Input
@@ -16,6 +16,16 @@ Input a podcast link or text, automatically extract:
 - 🎙️ Xiaoyuzhou podcast links
 - 🍎 Apple Podcasts links
 - 📝 Direct text input
+
+## Features
+
+- **AI-Powered Extraction** — Uses Alibaba Qwen for intelligent parsing
+- **Multi-Platform Links** — Direct search links to Douban, NetEase, Spotify, Bilibili, YouTube, Google, Baidu
+- **Personal Collection** — Save extractions locally with undo support
+- **Search & Filter** — Find saved items by podcast, book, or person name
+- **Export** — Download as Markdown or copy for Notion
+- **Bilingual** — English & Chinese (中文)
+- **Local-First** — All data stored in browser localStorage
 
 ## Tech Stack
 

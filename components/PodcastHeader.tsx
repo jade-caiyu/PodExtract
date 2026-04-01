@@ -1,5 +1,7 @@
 "use client";
 
+import { useTranslation } from "@/app/i18n/context";
+
 interface PodcastHeaderProps {
   podcastName: string;
   episodeTitle: string;
@@ -7,6 +9,8 @@ interface PodcastHeaderProps {
 }
 
 export default function PodcastHeader({ podcastName, episodeTitle, hostName }: PodcastHeaderProps) {
+  const { t } = useTranslation();
+
   if (!podcastName && !episodeTitle && !hostName) return null;
 
   return (
@@ -28,7 +32,7 @@ export default function PodcastHeader({ podcastName, episodeTitle, hostName }: P
           {hostName && (
             <span className="host-info">
               <span className="host-sep">·</span>
-              <span className="host-label">主播</span>
+              <span className="host-label">{t("hostLabel")}</span>
               <span className="host-name">{hostName}</span>
             </span>
           )}
