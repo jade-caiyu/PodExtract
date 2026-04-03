@@ -25,3 +25,6 @@ Thumbs.db
 
 # Docs (optional)
 docs/
+
+# Claude Agent config
+.claude/
