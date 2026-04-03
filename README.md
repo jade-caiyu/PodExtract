@@ -4,6 +4,9 @@ English | [中文](README.zh-CN.md)
 
 Extract structured resources from podcast show notes.
 
+![Home](assets/Snipaste_2026-04-03_22-25-29.png)
+![Results](assets/Snipaste_2026-04-03_22-26-09.png)
+
 Input a podcast link or text, automatically extract:
 - 📚 Books (with author & description)
 - 🎵 Music (with artist info)
@@ -62,7 +65,7 @@ Recommended: [Vercel](https://vercel.com)
 
 ## Note
 
-- You need your own Qwen API Key
+- You need your own Qwen/other AI API Key
 - API calls are billed by token usage
 
 ## License
