@@ -27,4 +27,4 @@ Thumbs.db
 docs/
 
 # Claude Agent config
-.claude/
+.claude/tsconfig.tsbuildinfo
